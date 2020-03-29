@@ -41,16 +41,8 @@ restTime = 20 #seconds
 
 while (True):
         
-    for time in range(workTime):
-
-        sleep(1)
-        
-
-    for time in range(restTime):
-
-        sleep(1)
-    
+    sleep(workTime)
     
     speak('Asad please take rest for 20 seconds and look 20 feet apart.')
 
-
+    sleep(restTime)
