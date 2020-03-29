@@ -4,8 +4,8 @@ from playsound import playsound
 import os
 import os.path
 
-assistant = 'Assistant.mp3'
-
+assistantRest = 'Assistant Rest.mp3'
+assistantResume = 'Assistant Resume.mp3'
 
 def checkAssistant(assistant):
 
@@ -21,20 +21,37 @@ def checkAssistant(assistant):
 
         return False
 
-def speak(message):
+
+def saveAssistant(assistant, message):
 
     if checkAssistant(assistant) is True:
 
-        pass
+        playsound(assistant)
 
     else:
 
         instruction = gTTS(message, lang = 'hi')
         instruction.save(assistant)
 
-    playsound(assistant)
+        playsound(assistant)
+
         
 
+def speak(message):
+
+    if 'rest' in message.lower():
+
+        assistant = assistantRest
+
+        saveAssistant(assistant, message)
+    
+
+    elif 'resume' in message.lower():
+
+        assistant = assistantResume
+
+        saveAssistant(assistant, message)
+    
 
 workTime = 20*60 
 restTime = 20 #seconds
@@ -46,3 +63,6 @@ while (True):
     speak('Asad please take rest for 20 seconds and look 20 feet apart.')
 
     sleep(restTime)
+
+    speak('Asad your can resume your work now')
+
